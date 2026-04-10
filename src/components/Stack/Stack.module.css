@@ -1,0 +1,139 @@
+.intro {
+  max-width: 52ch;
+  margin: 0 0 3.5rem;
+  color: var(--mid);
+  font-size: 0.95rem;
+  line-height: 1.85;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 2.75rem;
+}
+
+.categoryHeading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.15rem;
+  color: var(--dimtext);
+  font-family: var(--font-m);
+  font-size: 0.67rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.categoryHeading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.techItem {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--border);
+  background: var(--black);
+  transition: border-color 0.3s var(--ease);
+}
+
+.techItem::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  background: var(--red-low);
+  transition: width 0.38s var(--ease);
+  z-index: 0;
+}
+
+.techItem:hover::before {
+  width: 100%;
+}
+
+.techItem:hover {
+  border-color: rgba(232, 41, 28, 0.28);
+}
+
+.icon {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  opacity: 0.3;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.25s;
+}
+
+.techItem:hover .icon {
+  opacity: 1;
+}
+
+.name {
+  position: relative;
+  z-index: 1;
+  color: var(--dimtext);
+  font-family: var(--font-m);
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+  white-space: nowrap;
+  transition: color 0.25s;
+}
+
+.techItem:hover .name {
+  color: var(--white);
+}
+
+.tip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  z-index: 100;
+  padding: 0.38rem 0.75rem;
+  border: 1px solid var(--border);
+  background: #191919;
+  color: var(--text);
+  font-family: var(--font-m);
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(8px);
+  transition: opacity 0.22s, transform 0.22s var(--ease), visibility 0.22s;
+}
+
+.tip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: var(--border);
+}
+
+.techItem:hover .tip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 640px) {
+  .techItem {
+    padding: 0.55rem 0.85rem;
+  }
+}

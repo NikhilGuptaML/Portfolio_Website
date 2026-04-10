@@ -1,0 +1,74 @@
+.contactSection {
+  border-top: 1px solid var(--border);
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: end;
+}
+
+.headingWrap {
+  margin-bottom: 0;
+}
+
+.subtext {
+  margin: 1.25rem 0 0;
+  color: var(--mid);
+  font-size: 0.9rem;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  transition: background 0.2s;
+}
+
+.item:hover {
+  background: #161616;
+}
+
+.itemLabel {
+  color: var(--dimtext);
+  font-family: var(--font-m);
+  font-size: 0.63rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.itemValue {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text);
+  font-family: var(--font-m);
+  font-size: 0.7rem;
+  transition: color 0.2s;
+}
+
+.item:hover .itemValue {
+  color: var(--white);
+}
+
+.arrow {
+  color: var(--red);
+}
+
+@media (max-width: 900px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}

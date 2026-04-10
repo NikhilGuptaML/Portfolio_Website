@@ -1,0 +1,28 @@
+.footer {
+  position: relative;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+  background: var(--black);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inner p {
+  margin: 0;
+  color: var(--dimtext);
+  font-family: var(--font-m);
+  font-size: 0.62rem;
+  letter-spacing: 0.07em;
+}
+
+@media (max-width: 640px) {
+  .inner {
+    flex-direction: column;
+    gap: 0.35rem;
+    align-items: flex-start;
+  }
+}
