@@ -1,26 +1,27 @@
-.aboutGrid {
+.grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
   align-items: start;
+  margin-top: 4rem;
 }
 
-.aboutText p {
-  margin: 0 0 1rem;
+.text p {
+  margin: 0 0 1.2rem;
   color: var(--mid);
-  font-size: 0.94rem;
-  line-height: 1.88;
+  font-size: 0.96rem;
+  line-height: 1.9;
 }
 
-.aboutText strong {
+.text strong {
   color: var(--text);
   font-weight: 500;
 }
 
 .links {
   display: flex;
-  gap: 0.75rem;
-  margin-top: 2rem;
+  gap: 0.85rem;
+  margin-top: 2.5rem;
 }
 
 .button {
@@ -29,23 +30,27 @@
   justify-content: center;
   padding: 0.85rem 1.75rem;
   border: 1px solid var(--muted);
+  border-radius: 100px;
   color: var(--text);
   font-family: var(--font-m);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  transition: border-color 0.2s, color 0.2s;
+  transition: border-color 0.3s, color 0.3s, background 0.3s, transform 0.3s;
 }
 
 .button:hover {
   border-color: var(--white);
   color: var(--white);
+  background: var(--accent-low);
+  transform: scale(1.03);
 }
 
+/* ─── Meta Cards ─── */
 .meta {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 6px;
 }
 
 .metaItem {
@@ -53,16 +58,26 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem 1.5rem;
-  border: 1px solid var(--border);
-  background: var(--card);
+  padding: 1.1rem 1.6rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+.metaItem:hover {
+  background: var(--glass-strong);
+  border-color: var(--glass-border-hover);
+  transform: translateX(4px);
 }
 
 .metaKey {
   color: var(--dimtext);
   font-family: var(--font-m);
-  font-size: 0.63rem;
-  letter-spacing: 0.14em;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 
@@ -75,13 +90,13 @@
 }
 
 .accent {
-  color: var(--red);
+  color: #34d399;
 }
 
 @media (max-width: 900px) {
-  .aboutGrid {
+  .grid {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 3rem;
   }
 }
 
@@ -91,6 +106,6 @@
   }
 
   .metaItem {
-    padding: 0.9rem 1rem;
+    padding: 0.9rem 1.1rem;
   }
 }

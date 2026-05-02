@@ -1,0 +1,220 @@
+/* ─── Constellation Timeline ─── */
+.constellation {
+  position: relative;
+  margin: 4rem auto 0;
+  max-width: 600px;
+  padding: 2rem 0;
+}
+
+/* The horizontal connecting line */
+.line {
+  position: absolute;
+  top: 50%;
+  left: 2rem;
+  right: 2rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--muted) 15%,
+    var(--muted) 85%,
+    transparent 100%
+  );
+  transform: translateY(-50%);
+}
+
+/* Star container — evenly spaced */
+.stars {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+/* Each star point */
+.star {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* The visible dot */
+.starDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--dimtext);
+  border: 2px solid var(--black);
+  box-shadow: 0 0 0 1px var(--muted);
+  transition: background 0.4s, box-shadow 0.4s, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.star:hover .starDot {
+  background: var(--mid);
+  transform: scale(1.2);
+}
+
+/* Active star */
+.starActive .starDot {
+  background: var(--white);
+  box-shadow: 0 0 0 2px var(--black), 0 0 0 4px rgba(255, 255, 255, 0.2);
+  transform: scale(1.3);
+}
+
+/* Glow halo behind active star */
+.starGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0px;
+  height: 0px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.starActive .starGlow {
+  width: 60px;
+  height: 60px;
+}
+
+/* Year label under each star */
+.starLabel {
+  color: var(--dimtext);
+  font-family: var(--font-m);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+  transition: color 0.3s;
+}
+
+.starActive .starLabel {
+  color: var(--white);
+}
+
+.star:hover .starLabel {
+  color: var(--mid);
+}
+
+/* ─── Detail Card ─── */
+.detail {
+  max-width: 600px;
+  margin: 3rem auto 0;
+  padding: 2.5rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  animation: detailIn 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes detailIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.detailHeader {
+  margin-bottom: 1.5rem;
+}
+
+.type {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  padding: 0.2rem 0.65rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  background: var(--accent-low);
+  color: var(--mid);
+  font-family: var(--font-m);
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.role {
+  margin: 0 0 0.3rem;
+  color: var(--white);
+  font-family: var(--font-d);
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.company {
+  margin: 0;
+  color: var(--mid);
+  font-family: var(--font-m);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.period {
+  color: var(--dimtext);
+}
+
+.detailText {
+  margin: 0 0 1.8rem;
+  color: var(--mid);
+  font-size: 0.9rem;
+  line-height: 1.85;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.skill {
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  background: var(--accent-low);
+  color: var(--dimtext);
+  font-family: var(--font-m);
+  font-size: 0.56rem;
+  letter-spacing: 0.04em;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 640px) {
+  .constellation {
+    margin-top: 3rem;
+  }
+
+  .stars {
+    padding: 0 0.5rem;
+  }
+
+  .line {
+    left: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .detail {
+    padding: 1.75rem;
+  }
+
+  .starDot {
+    width: 10px;
+    height: 10px;
+  }
+}

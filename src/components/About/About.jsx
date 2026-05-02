@@ -5,10 +5,14 @@ export default function About({ paragraphs, meta }) {
   return (
     <section id="about">
       <div className="container">
-        <SectionHeading label="About" title="The Short Version" />
+        <SectionHeading
+          label="About"
+          title="The Short Version"
+          centered
+        />
 
-        <div className={styles.aboutGrid}>
-          <div className={`reveal ${styles.aboutText}`}>
+        <div className={styles.grid}>
+          <div className={`reveal ${styles.text}`}>
             {paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import SectionHeading from '../SectionHeading/SectionHeading'
 import styles from './Stack.module.css'
 
@@ -12,17 +13,44 @@ function TechItem({ item }) {
 }
 
 export default function Stack({ categories }) {
-  return (
-    <section id="stack" className="sectionMuted">
-      <div className="container">
-        <SectionHeading label="Tech Stack" title="Tools I Work With" />
-        <p className={`reveal ${styles.intro}`}>Hover any item to see how I&apos;ve actually used it.</p>
+  const [isMobile, setIsMobile] = useState(false)
 
-        <div className={`reveal ${styles.categories}`}>
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 900)
+  }, [])
+
+  return (
+    <section id="stack" className={styles.section}>
+      {/* Video background (desktop only) */}
+      {!isMobile && (
+        <>
+          <video
+            className={styles.video}
+            src="/videos/stack-ink.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            aria-hidden="true"
+            data-parallax-video
+          />
+          <div className={styles.overlay} aria-hidden="true" />
+        </>
+      )}
+
+      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+        <SectionHeading
+          label="Tech Stack"
+          title="Tools I Work With"
+          subtitle="Hover any item to see how I've actually used it."
+          centered
+        />
+
+        <div className={styles.categories}>
           {categories.map((category) => (
-            <div key={category.title} className={styles.category}>
-              <p className={styles.categoryHeading}>{category.title}</p>
-              <div className={styles.row}>
+            <div key={category.title} className={`reveal ${styles.category}`}>
+              <p className={styles.categoryLabel}>{category.title}</p>
+              <div className={styles.row} data-stagger-row>
                 {category.items.map((item) => (
                   <TechItem key={item.name} item={item} />
                 ))}

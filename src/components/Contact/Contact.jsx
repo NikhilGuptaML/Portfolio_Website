@@ -3,12 +3,14 @@ import styles from './Contact.module.css'
 
 export default function Contact({ items }) {
   return (
-    <section id="contact" className={styles.contactSection}>
+    <section id="contact" className={styles.section}>
       <div className="container">
-        <div className={styles.contactGrid}>
+        <div className={styles.layout}>
           <div className={`reveal ${styles.left}`}>
             <SectionHeading label="Contact" title="Let's work." className={styles.headingWrap} />
-            <p className={styles.subtext}>Building the future of AI - one system at a time.</p>
+            <p className={styles.subtext}>
+              Building the future of AI — one system at a time.
+            </p>
           </div>
 
           <div className={`reveal ${styles.items}`}>

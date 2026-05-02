@@ -1,28 +1,56 @@
 .label {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 0.75rem;
-  color: var(--red);
+  margin-bottom: 1rem;
+  color: var(--mid);
   font-family: var(--font-m);
-  font-size: 0.65rem;
-  letter-spacing: 0.22em;
+  font-size: 0.62rem;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
 }
 
-.label::after {
+.label::before {
   content: '';
-  flex: 1;
+  width: 24px;
   height: 1px;
-  background: var(--border);
+  background: var(--muted);
 }
 
 .title {
-  margin: 0 0 3rem;
+  margin: 0 0 1.5rem;
   color: var(--white);
   font-family: var(--font-d);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
   font-weight: 800;
   line-height: 1.05;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
+}
+
+.subtitle {
+  max-width: 48ch;
+  margin: 0;
+  color: var(--mid);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+/* ─── Centered variant ─── */
+.centered {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.centered .label::before,
+.centered .label::after {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--muted);
+}
+
+.centered .subtitle {
+  max-width: 52ch;
 }

@@ -1,5 +1,6 @@
 export const navigationLinks = [
   { label: 'Work', href: '#projects' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Stack', href: '#stack' },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' }
@@ -19,7 +20,7 @@ export const heroStats = [
   { value: 'Delhi, IN', label: 'India · Remote-first' }
 ]
 
-export const featuredProjects = [
+export const allProjects = [
   {
     id: '01',
     badge: 'Government Contract Project',
@@ -29,23 +30,63 @@ export const featuredProjects = [
       'Building a production document intelligence system for a government client - finetuning Qwen2.5-VL with QLoRA on RTX A4000 to extract and understand structured data from scanned government documents. Exporting GGUF via llama.cpp for fully local, air-gapped deployment.',
     tags: ['Qwen2.5-VL', 'QLoRA', 'llama.cpp', 'FastAPI'],
     link: 'https://github.com/NikhilGuptaML'
-  }
-]
-
-export const secondaryProjects = [
+  },
   {
     id: '02',
-    badge: 'Coming Soon',
+    badge: 'Hackathon Project',
     title: 'Royale AI Commander',
     line: 'LangGraph ReAct agent commanding tower defense via A*/Dijkstra on a live 20x20 grid.',
-    tags: ['LangGraph', 'ReAct', 'A*', 'FastAPI']
+    description:
+      'A real-time strategy game where an AI commander (LangGraph ReAct agent) analyzes the battlefield, places defensive towers using A* pathfinding, and adapts strategy based on enemy movement patterns. Full-stack with FastAPI backend and interactive HTML/JS frontend.',
+    tags: ['LangGraph', 'ReAct', 'A*', 'FastAPI'],
+    link: 'https://github.com/NikhilGuptaML'
   },
   {
     id: '03',
-    badge: 'Coming Soon',
+    badge: 'Hackathon Project',
     title: 'Contact Tracing Sim',
     line: 'Privacy-preserving geospatial sim — Quadtrees + Bloom Filters on a live Leaflet/OSM map.',
-    tags: ['Quadtree', 'Bloom Filter', 'Leaflet.js']
+    description:
+      'A privacy-first contact tracing simulation featuring a Pokémon Go-inspired 2D map, custom Quadtree spatial index, Bloom Filter-based risk assessment, and an autonomous Danger Zone Alert Agent. Demonstrates advanced data structures in a gamified environment.',
+    tags: ['Quadtree', 'Bloom Filter', 'Leaflet.js'],
+    link: 'https://github.com/NikhilGuptaML'
+  },
+  {
+    id: '04',
+    badge: 'Research Project',
+    title: 'Cognitive Load Balancer',
+    line: 'Adaptive learning system that steers study difficulty in real-time based on cognitive load signals.',
+    description:
+      'An LLM-powered study platform that measures cognitive load through response accuracy, time-on-task, and self-reported difficulty. Uses a mathematical model to dynamically adjust question complexity, with research dashboards for simulated and real-world participant data.',
+    tags: ['FastAPI', 'React', 'LLM Eval', 'PostgreSQL'],
+    link: 'https://github.com/NikhilGuptaML'
+  }
+]
+
+export const experienceTimeline = [
+  {
+    role: 'AI Engineer',
+    company: 'Government Contract',
+    type: 'Contract',
+    period: '2025 — Present',
+    description: 'Building a production document intelligence pipeline for scanned government records. Finetuning Qwen2.5-VL with QLoRA on RTX A4000, exporting GGUF via llama.cpp for fully local, air-gapped deployment.',
+    skills: ['Qwen2.5-VL', 'QLoRA', 'llama.cpp', 'FastAPI']
+  },
+  {
+    role: 'AI/ML Self-Study',
+    company: 'Independent',
+    type: 'Self-Taught',
+    period: '2024 — Present',
+    description: 'Andrew Ng\'s deep learning specializations, IIT Guwahati NLP and CV courses. Built 3+ hackathon projects shipping real agentic systems, RAG pipelines, and VLM-powered applications.',
+    skills: ['PyTorch', 'HuggingFace', 'LangGraph', 'RAG']
+  },
+  {
+    role: 'B.Tech Computer Science',
+    company: 'VIPS · Delhi',
+    type: 'Education',
+    period: '2024 — 2028',
+    description: 'Pursuing B.Tech in Computer Science with AI/ML specialization. Parallel-tracking coursework with real-world AI engineering projects and government contract work.',
+    skills: ['DSA', 'C++', 'Python', 'Mathematics']
   }
 ]
 

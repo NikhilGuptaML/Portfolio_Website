@@ -4,7 +4,7 @@
   left: 0;
   width: 6px;
   height: 6px;
-  background: var(--red);
+  background: var(--white);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
@@ -17,7 +17,7 @@
   left: 0;
   width: 32px;
   height: 32px;
-  border: 1.5px solid rgba(232, 41, 28, 0.5);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
@@ -28,7 +28,7 @@
 .active {
   width: 52px;
   height: 52px;
-  border-color: var(--red);
+  border-color: var(--white);
 }
 
 @media (pointer: coarse) {
