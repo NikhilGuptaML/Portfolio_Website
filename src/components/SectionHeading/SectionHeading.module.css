@@ -3,7 +3,7 @@
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 1rem;
-  color: var(--mid);
+  color: var(--accent);
   font-family: var(--font-m);
   font-size: 0.62rem;
   letter-spacing: 0.25em;
@@ -14,17 +14,20 @@
   content: '';
   width: 24px;
   height: 1px;
-  background: var(--muted);
+  background: linear-gradient(90deg, transparent, var(--accent));
 }
 
 .title {
   margin: 0 0 1.5rem;
-  color: var(--white);
   font-family: var(--font-d);
   font-size: clamp(2.2rem, 5vw, 3.8rem);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--white) 30%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
@@ -48,7 +51,11 @@
   content: '';
   width: 24px;
   height: 1px;
-  background: var(--muted);
+  background: linear-gradient(90deg, transparent, var(--accent));
+}
+
+.centered .label::after {
+  background: linear-gradient(90deg, var(--accent), transparent);
 }
 
 .centered .subtitle {

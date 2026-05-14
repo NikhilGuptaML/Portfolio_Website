@@ -11,32 +11,39 @@
   background: var(--black);
 }
 
-/* ─── Video ─── */
-.video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-  opacity: 0.35;
-  z-index: 0;
+/* Remove the default section::before glow from the hero */
+.hero::before {
+  display: none;
 }
 
 .veil {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
   background:
     radial-gradient(ellipse 80% 60% at 50% 40%, transparent 0%, rgba(6,6,6,0.7) 100%),
     linear-gradient(180deg, rgba(6,6,6,0.2) 0%, rgba(6,6,6,0.4) 60%, rgba(6,6,6,0.95) 100%);
 }
 
+.colorBends {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.colorBendsCanvas {
+  width: 100%;
+  height: 100%;
+  opacity: 0.65;
+  mix-blend-mode: screen;
+}
+
 /* ─── Content (Centered) ─── */
 .content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,12 +58,12 @@
   gap: 0.6rem;
   margin: 0 0 2rem;
   padding: 0.4rem 1.2rem 0.4rem 0.8rem;
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(52, 211, 153, 0.15);
   border-radius: 100px;
-  background: var(--glass);
+  background: rgba(52, 211, 153, 0.04);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  color: var(--accent);
+  color: var(--accent-green);
   font-family: var(--font-m);
   font-size: 0.65rem;
   letter-spacing: 0.18em;
@@ -74,23 +81,39 @@
   animation: pulseDot 2s ease-in-out infinite;
 }
 
-/* ─── Name — Apple-scale headline ─── */
+/* ─── Name — Apple-scale headline with gradient ─── */
 .name {
   margin: 0 0 1.5rem;
-  color: var(--white);
   font-family: var(--font-d);
   font-size: clamp(4rem, 10vw, 8.5rem);
   font-weight: 900;
   line-height: 0.9;
   letter-spacing: -0.04em;
+  background: linear-gradient(
+    135deg,
+    var(--white) 0%,
+    var(--accent) 45%,
+    var(--white) 70%,
+    rgba(232, 121, 249, 0.9) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeUp 0.9s var(--ease) forwards 0.35s, shimmerName 6s ease-in-out infinite 1.5s;
   opacity: 0;
-  animation: fadeUp 0.9s var(--ease) forwards 0.35s;
+}
+
+@keyframes shimmerName {
+  0% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+  100% { background-position: 0% center; }
 }
 
 .role {
   min-height: 1.6em;
   margin: 0 0 2rem;
-  color: var(--mid);
+  color: var(--accent);
   font-family: var(--font-m);
   font-size: clamp(0.85rem, 1.5vw, 1.05rem);
   letter-spacing: 0.06em;
@@ -102,10 +125,8 @@
   display: inline-block;
   width: 2px;
   height: 0.85em;
-  margin-left: 3px;
   vertical-align: text-bottom;
-  background: var(--white);
-  animation: blink 1s step-end infinite;
+  background: var(--accent);
 }
 
 .bio {
@@ -119,7 +140,7 @@
 }
 
 .bio strong {
-  color: var(--text);
+  color: var(--accent);
   font-weight: 500;
 }
 
@@ -149,14 +170,16 @@
 }
 
 .btnPrimary {
-  background: var(--white);
+  background: var(--accent);
   color: var(--black);
-  border: 1px solid var(--white);
+  border: 1px solid var(--accent);
+  font-weight: 500;
 }
 
 .btnPrimary:hover {
   background: transparent;
-  color: var(--white);
+  color: var(--accent);
+  box-shadow: 0 0 30px rgba(167, 139, 250, 0.12);
   transform: scale(1.03);
 }
 
@@ -167,8 +190,8 @@
 }
 
 .btnGhost:hover {
-  border-color: var(--white);
-  color: var(--white);
+  border-color: var(--accent);
+  color: var(--accent);
   transform: scale(1.03);
 }
 
@@ -178,7 +201,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 3;
+  z-index: 4;
   display: flex;
   justify-content: center;
   gap: 0;
@@ -204,7 +227,7 @@
 }
 
 .stat:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(167, 139, 250, 0.03);
 }
 
 .statValue {
@@ -233,7 +256,7 @@
   bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 4;
+  z-index: 5;
   opacity: 0;
   animation: fadeIn 1s var(--ease) forwards 1.5s;
 }
@@ -241,7 +264,7 @@
 .scrollLine {
   width: 1px;
   height: 40px;
-  background: linear-gradient(180deg, var(--mid), transparent);
+  background: linear-gradient(180deg, var(--accent), transparent);
   animation: subtleFloat 2.5s ease-in-out infinite;
 }
 

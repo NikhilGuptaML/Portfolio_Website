@@ -14,6 +14,11 @@
 
 .logo {
   display: inline-flex;
+  transition: transform 0.3s var(--ease);
+}
+
+.logo:hover {
+  transform: scale(1.06);
 }
 
 .links {
@@ -25,6 +30,7 @@
 }
 
 .link {
+  position: relative;
   color: var(--dimtext);
   font-family: var(--font-m);
   font-size: 0.65rem;
@@ -33,25 +39,68 @@
   transition: color 0.25s;
 }
 
-.link:hover {
-  color: var(--white);
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s var(--ease);
 }
 
-.cta {
+.link:hover {
+  color: var(--accent);
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+/* ─── Right-side actions group ─── */
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.resumeBtn {
   padding: 0.4rem 1.1rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 100px;
-  color: var(--white);
+  color: var(--mid);
   font-family: var(--font-m);
   font-size: 0.62rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.25s;
+}
+
+.resumeBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--white);
+  transform: scale(1.04);
+}
+
+.cta {
+  padding: 0.4rem 1.1rem;
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 100px;
+  color: var(--accent);
+  font-family: var(--font-m);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 
 .cta:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(167, 139, 250, 0.08);
+  border-color: rgba(167, 139, 250, 0.4);
+  box-shadow: 0 0 20px rgba(167, 139, 250, 0.08);
   transform: scale(1.04);
 }
 
@@ -62,5 +111,9 @@
 
   .links {
     display: none;
+  }
+
+  .navActions {
+    gap: 0.5rem;
   }
 }

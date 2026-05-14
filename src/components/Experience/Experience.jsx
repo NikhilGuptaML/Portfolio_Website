@@ -37,7 +37,7 @@ export default function Experience({ timeline }) {
         </div>
 
         {/* ─── Active Entry Detail ─── */}
-        <div className={`reveal ${styles.detail}`} key={active}>
+        <div className={styles.detail} key={active}>
           <div className={styles.detailHeader}>
             <div>
               <span className={styles.type}>{timeline[active].type}</span>

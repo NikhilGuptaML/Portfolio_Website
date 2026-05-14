@@ -1,5 +1,19 @@
 .section {
   border-top: 1px solid var(--border);
+  position: relative;
+}
+
+/* Ambient glow at top of contact section */
+.section::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.3;
 }
 
 .layout {
@@ -42,8 +56,8 @@
 
 .item:hover {
   background: var(--glass-strong);
-  border-color: var(--glass-border-hover);
-  box-shadow: 0 4px 24px rgba(255, 255, 255, 0.02);
+  border-color: rgba(167, 139, 250, 0.12);
+  box-shadow: 0 4px 24px rgba(167, 139, 250, 0.03);
   transform: translateX(4px);
 }
 
@@ -66,7 +80,7 @@
 }
 
 .item:hover .itemValue {
-  color: var(--white);
+  color: var(--accent);
 }
 
 .arrow {
@@ -76,7 +90,7 @@
 
 .item:hover .arrow {
   transform: translateX(4px);
-  color: var(--white);
+  color: var(--accent);
 }
 
 @media (max-width: 900px) {

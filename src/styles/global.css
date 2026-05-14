@@ -8,19 +8,25 @@
   --mid: #777777;
   --text: #b0b0b0;
   --white: #f5f5f7;
-  --accent: #f5f5f7;
-  --accent-low: rgba(255, 255, 255, 0.06);
-  --accent-mid: rgba(255, 255, 255, 0.14);
+  --accent: #a78bfa;
+  --accent-warm: #f0c27a;
+  --accent-green: #34d399;
+  --accent-low: rgba(167, 139, 250, 0.06);
+  --accent-mid: rgba(167, 139, 250, 0.14);
   --glass: rgba(10, 10, 10, 0.6);
   --glass-strong: rgba(10, 10, 10, 0.8);
   --glass-border: rgba(255, 255, 255, 0.06);
-  --glass-border-hover: rgba(255, 255, 255, 0.14);
+  --glass-border-hover: rgba(167, 139, 250, 0.18);
   --glass-blur: 24px;
   --font-d: 'Cabinet Grotesk', sans-serif;
   --font-b: 'Satoshi', sans-serif;
   --font-m: 'IBM Plex Mono', monospace;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+  /* Gradient angles for accent flow */
+  --glow-1: rgba(167, 139, 250, 0.07);
+  --glow-2: rgba(232, 121, 249, 0.05);
+  --glow-3: rgba(240, 194, 122, 0.05);
 }
 
 * {
@@ -36,6 +42,26 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(167, 139, 250, 0.25) transparent;
+}
+
+/* ─── Custom Scrollbar (WebKit) ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(167, 139, 250, 0.35);
 }
 
 body {
@@ -69,7 +95,7 @@ button {
 }
 
 ::selection {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(167, 139, 250, 0.25);
   color: var(--white);
 }
 
@@ -97,6 +123,21 @@ section {
   background: var(--black);
 }
 
+/* Ambient glow between sections — subtle color wash */
+section::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 240px;
+  background: radial-gradient(ellipse at center, var(--glow-1), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
+}
+
 .sectionMuted {
   background: var(--surface);
 }
@@ -113,13 +154,13 @@ section {
   transform: translateY(0);
 }
 
-/* ─── Divider ─── */
+/* ─── Divider — now with subtle gradient ─── */
 .sectionDivider {
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
   height: 1px;
-  background: var(--border);
+  background: linear-gradient(90deg, transparent, var(--accent-mid), transparent);
 }
 
 /* ─── Keyframes ─── */
@@ -160,6 +201,16 @@ section {
   50% { transform: translateY(-8px); }
 }
 
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
 /* ─── Responsive ─── */
 @media (max-width: 640px) {
   .container {
@@ -172,6 +223,10 @@ section {
 
   section {
     padding: 6rem 0;
+  }
+
+  section::before {
+    display: none;
   }
 }
 

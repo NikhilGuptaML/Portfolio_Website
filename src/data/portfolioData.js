@@ -29,6 +29,18 @@ export const allProjects = [
     description:
       'Building a production document intelligence system for a government client - finetuning Qwen2.5-VL with QLoRA on RTX A4000 to extract and understand structured data from scanned government documents. Exporting GGUF via llama.cpp for fully local, air-gapped deployment.',
     tags: ['Qwen2.5-VL', 'QLoRA', 'llama.cpp', 'FastAPI'],
+    caseStudy: {
+      label: 'Featured Case Study',
+      vision: 'Turn scanned government records into structured, searchable data without cloud exposure.',
+      flow: [
+        'Ingest scanned records and normalize layouts',
+        'Fine-tune Qwen2.5-VL with QLoRA for field extraction',
+        'Validate outputs and package structured payloads',
+        'Export GGUF via llama.cpp for local inference',
+        'Deploy an air-gapped FastAPI service'
+      ],
+      buildNotes: 'Accuracy-first extraction with strict on-prem constraints and fully local deployment.'
+    },
     link: 'https://github.com/NikhilGuptaML'
   },
   {
@@ -39,6 +51,17 @@ export const allProjects = [
     description:
       'A real-time strategy game where an AI commander (LangGraph ReAct agent) analyzes the battlefield, places defensive towers using A* pathfinding, and adapts strategy based on enemy movement patterns. Full-stack with FastAPI backend and interactive HTML/JS frontend.',
     tags: ['LangGraph', 'ReAct', 'A*', 'FastAPI'],
+    caseStudy: {
+      vision: 'Create an AI commander that reacts to live battle conditions and optimizes defenses in real time.',
+      flow: [
+        'Stream live grid state into the decision loop',
+        'Run LangGraph ReAct reasoning for tower placement',
+        'Compute shortest paths with A* and Dijkstra',
+        'Apply placements and simulate enemy response',
+        'Sync strategy with the UI and backend services'
+      ],
+      buildNotes: 'Balanced agent reasoning speed with deterministic pathfinding for reliable gameplay.'
+    },
     link: 'https://github.com/NikhilGuptaML'
   },
   {
@@ -49,6 +72,17 @@ export const allProjects = [
     description:
       'A privacy-first contact tracing simulation featuring a Pokémon Go-inspired 2D map, custom Quadtree spatial index, Bloom Filter-based risk assessment, and an autonomous Danger Zone Alert Agent. Demonstrates advanced data structures in a gamified environment.',
     tags: ['Quadtree', 'Bloom Filter', 'Leaflet.js'],
+    caseStudy: {
+      vision: 'Visualize exposure risk without compromising personal location privacy.',
+      flow: [
+        'Ingest anonymized location pings',
+        'Index points with a Quadtree for fast queries',
+        'Compute risk via Bloom Filter checks',
+        'Render live zones on Leaflet/OSM maps',
+        'Trigger alerts for emerging hotspots'
+      ],
+      buildNotes: 'Optimized spatial queries and risk scoring to keep the simulation responsive.'
+    },
     link: 'https://github.com/NikhilGuptaML'
   },
   {
@@ -59,6 +93,17 @@ export const allProjects = [
     description:
       'An LLM-powered study platform that measures cognitive load through response accuracy, time-on-task, and self-reported difficulty. Uses a mathematical model to dynamically adjust question complexity, with research dashboards for simulated and real-world participant data.',
     tags: ['FastAPI', 'React', 'LLM Eval', 'PostgreSQL'],
+    caseStudy: {
+      vision: 'Adapt learning difficulty on the fly based on cognitive load signals.',
+      flow: [
+        'Collect response accuracy and timing signals',
+        'Estimate cognitive load from multi-signal inputs',
+        'Select the next difficulty tier in real time',
+        'Log outcomes to research dashboards',
+        'Evaluate LLM responses against study metrics'
+      ],
+      buildNotes: 'Focused on measurable learning outcomes with transparent difficulty shifts.'
+    },
     link: 'https://github.com/NikhilGuptaML'
   }
 ]

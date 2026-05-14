@@ -2,6 +2,11 @@
   padding-bottom: 6rem;
 }
 
+/* Remove default section glow — projects has its own */
+.section::before {
+  display: none;
+}
+
 /* ─── Carousel ─── */
 .carousel {
   max-width: 900px;
@@ -30,26 +35,61 @@
   -webkit-backdrop-filter: blur(12px);
   color: var(--mid);
   cursor: pointer;
-  transition: border-color 0.3s, color 0.3s, background 0.3s, transform 0.2s;
+  transition: border-color 0.3s, color 0.3s, background 0.3s, transform 0.2s, box-shadow 0.3s;
 }
 
 .arrow:hover {
-  border-color: var(--glass-border-hover);
-  color: var(--white);
-  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(167, 139, 250, 0.2);
+  color: var(--accent);
+  background: rgba(167, 139, 250, 0.04);
   transform: scale(1.08);
+  box-shadow: 0 0 16px rgba(167, 139, 250, 0.06);
 }
 
 /* ─── Project Card ─── */
+.cardShell {
+  flex: 1;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+}
+
+.cardShell:focus-visible {
+  box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.35);
+}
+
+.cardShell :global(.inner-content) {
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 0;
+  text-align: left;
+  color: var(--text);
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.cardShell:hover :global(.inner-content) {
+  border-color: rgba(167, 139, 250, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35), 0 0 40px rgba(167, 139, 250, 0.04);
+}
+
+.cardShell :global(.border-gradient-bottom),
+.cardShell :global(.border-gradient-top) {
+  opacity: 0.45;
+  filter: blur(0.2px);
+}
+
 .card {
   flex: 1;
   min-height: 340px;
   padding: 3rem;
-  border: 1px solid var(--glass-border);
+  border: none;
   border-radius: 20px;
-  background: var(--glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: transparent;
   animation: cardIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -79,15 +119,19 @@
   line-height: 1;
   letter-spacing: -0.03em;
   user-select: none;
+  background: linear-gradient(180deg, var(--muted) 0%, rgba(42, 42, 42, 0.3) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .badge {
   display: inline-block;
   padding: 0.25rem 0.75rem;
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(167, 139, 250, 0.12);
   border-radius: 100px;
-  background: var(--accent-low);
-  color: var(--mid);
+  background: rgba(167, 139, 250, 0.04);
+  color: var(--accent);
   font-family: var(--font-m);
   font-size: 0.56rem;
   letter-spacing: 0.14em;
@@ -107,7 +151,7 @@
 .oneLiner {
   margin: 0 0 1rem;
   padding-left: 0.9rem;
-  border-left: 2px solid var(--muted);
+  border-left: 2px solid var(--accent);
   color: var(--mid);
   font-family: var(--font-m);
   font-size: 0.76rem;
@@ -145,10 +189,16 @@
   font-family: var(--font-m);
   font-size: 0.58rem;
   letter-spacing: 0.04em;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.cardShell:hover .tag {
+  border-color: rgba(167, 139, 250, 0.1);
+  color: var(--mid);
 }
 
 .link {
-  color: var(--mid);
+  color: var(--accent);
   font-family: var(--font-m);
   font-size: 0.66rem;
   letter-spacing: 0.08em;
@@ -192,7 +242,7 @@
 
 .dotActive {
   width: 28px;
-  background: var(--white);
+  background: var(--accent);
 }
 
 .pauseBtn {
@@ -210,9 +260,247 @@
 }
 
 .pauseBtn:hover {
-  border-color: var(--glass-border-hover);
+  border-color: rgba(167, 139, 250, 0.15);
+  color: var(--accent);
+  background: rgba(167, 139, 250, 0.04);
+}
+
+/* ─── Case Study Modal ─── */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5rem 1.5rem;
+  background: rgba(5, 5, 5, 0.72);
+  backdrop-filter: blur(12px);
+}
+
+.modal {
+  position: relative;
+  width: min(980px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2.6rem 2.6rem 2.8rem;
+  border-radius: 26px;
+  background: linear-gradient(180deg, rgba(14, 14, 14, 0.98) 0%, rgba(8, 8, 8, 0.98) 100%);
+  border: 1px solid rgba(167, 139, 250, 0.1);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 60px rgba(167, 139, 250, 0.04);
+}
+
+.modal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 26px;
+  background:
+    radial-gradient(120% 120% at 0% 0%, rgba(167, 139, 250, 0.08) 0%, rgba(0, 0, 0, 0) 60%),
+    radial-gradient(80% 90% at 100% 20%, rgba(232, 121, 249, 0.06) 0%, rgba(0, 0, 0, 0) 60%);
+  pointer-events: none;
+}
+
+.modalHeader {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding-right: 3rem;
+}
+
+.modalBadge {
+  color: var(--accent);
+  font-family: var(--font-m);
+  font-size: 0.6rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.modalTitle {
+  margin: 0;
   color: var(--white);
-  background: rgba(255, 255, 255, 0.06);
+  font-family: var(--font-d);
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  letter-spacing: -0.02em;
+}
+
+.modalSubtitle {
+  margin: 0;
+  color: var(--mid);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 65ch;
+}
+
+.modalClose {
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  background: rgba(16, 16, 16, 0.7);
+  color: var(--accent);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.modalClose:hover {
+  transform: scale(1.05);
+  border-color: rgba(167, 139, 250, 0.5);
+  color: var(--white);
+  box-shadow: 0 0 14px rgba(167, 139, 250, 0.1);
+}
+
+.modalGrid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.modalPanel {
+  position: relative;
+  border-radius: 18px;
+  padding: 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(12, 12, 12, 0.72);
+}
+
+.modalLabel {
+  margin: 0 0 0.75rem;
+  color: var(--accent);
+  font-family: var(--font-m);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.modalText {
+  margin: 0;
+  color: var(--mid);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.modalList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.modalListItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  color: var(--text);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.modalStep {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(167, 139, 250, 0.35);
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-m);
+  font-size: 0.6rem;
+}
+
+.modalTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.modalTag {
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(167, 139, 250, 0.1);
+  background: rgba(167, 139, 250, 0.04);
+  color: var(--mid);
+  font-family: var(--font-m);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.modalHint {
+  margin-top: 0.8rem;
+  color: var(--dimtext);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.modalScreenshots {
+  margin-top: 2rem;
+}
+
+.modalShotsGrid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.modalShot {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(8, 8, 8, 0.7);
+}
+
+.modalShot img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.modalActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2.2rem;
+}
+
+.modalLink,
+.modalDismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.6rem;
+  border-radius: 999px;
+  font-family: var(--font-m);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  background: rgba(20, 20, 20, 0.7);
+  color: var(--accent);
+  transition: transform 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.modalLink:hover,
+.modalDismiss:hover {
+  transform: translateY(-1px);
+  border-color: rgba(167, 139, 250, 0.5);
+  color: var(--white);
+  box-shadow: 0 4px 20px rgba(167, 139, 250, 0.08);
 }
 
 /* ─── Responsive ─── */
@@ -223,6 +511,10 @@
 
   .card {
     min-height: auto;
+  }
+
+  .modalGrid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -237,5 +529,18 @@
 
   .number {
     font-size: 2.5rem;
+  }
+
+  .modal {
+    padding: 2rem 1.5rem 2.2rem;
+  }
+
+  .modalClose {
+    top: 1.1rem;
+    right: 1.1rem;
+  }
+
+  .modalShotsGrid {
+    grid-template-columns: 1fr;
   }
 }

@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import SectionHeading from '../SectionHeading/SectionHeading'
 import styles from './Stack.module.css'
 
@@ -13,31 +12,8 @@ function TechItem({ item }) {
 }
 
 export default function Stack({ categories }) {
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 900)
-  }, [])
-
   return (
     <section id="stack" className={styles.section}>
-      {/* Video background (desktop only) */}
-      {!isMobile && (
-        <>
-          <video
-            className={styles.video}
-            src="/videos/stack-ink.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            aria-hidden="true"
-            data-parallax-video
-          />
-          <div className={styles.overlay} aria-hidden="true" />
-        </>
-      )}
-
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <SectionHeading
           label="Tech Stack"
