@@ -9,7 +9,7 @@ export default function Contact({ items }) {
           <div className={`reveal ${styles.left}`}>
             <SectionHeading label="Contact" title="Let's work." className={styles.headingWrap} />
             <p className={styles.subtext}>
-              Building the future of AI — one system at a time.
+              Got a hard problem and no one to throw at it? I'm the person who says yes and figures it out.
             </p>
           </div>
 

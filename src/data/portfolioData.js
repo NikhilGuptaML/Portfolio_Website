@@ -14,8 +14,8 @@ export const heroRoles = [
 ]
 
 export const heroStats = [
-  { value: '3+', label: 'Hackathon Projects Shipped' },
-  { value: 'VLM Research', label: 'Qwen2.5-VL · QLoRA · RTX A4000' },
+  { value: '4+', label: 'Production-Grade Projects' },
+  { value: 'VLM Research', label: 'Qwen2.5-VL · QLoRA · GGUF' },
   { value: '2nd', label: 'Year · B.Tech CS · AI/ML' },
   { value: 'Delhi, IN', label: 'India · Remote-first' }
 ]
@@ -23,11 +23,32 @@ export const heroStats = [
 export const allProjects = [
   {
     id: '01',
-    badge: 'Government Contract Project',
-    title: 'GOVT-DOC-VLM',
-    line: 'Production document intelligence pipeline for scanned government records.',
+    badge: 'Research Project',
+    title: 'Cognitive Load Balancer',
+    line: 'Adaptive learning system that steers study difficulty in real-time based on cognitive load signals.',
     description:
-      'Building a production document intelligence system for a government client - finetuning Qwen2.5-VL with QLoRA on RTX A4000 to extract and understand structured data from scanned government documents. Exporting GGUF via llama.cpp for fully local, air-gapped deployment.',
+      'An LLM-powered study platform that measures cognitive load through response accuracy, time-on-task, and self-reported difficulty. Uses a mathematical model to dynamically adjust question complexity, with research dashboards for simulated and real-world participant data.',
+    tags: ['FastAPI', 'React', 'LLM Eval', 'PostgreSQL'],
+    caseStudy: {
+      vision: 'Adapt learning difficulty on the fly based on cognitive load signals.',
+      flow: [
+        'Collect response accuracy and timing signals',
+        'Estimate cognitive load from multi-signal inputs',
+        'Select the next difficulty tier in real time',
+        'Log outcomes to research dashboards',
+        'Evaluate LLM responses against study metrics'
+      ],
+      buildNotes: 'Focused on measurable learning outcomes with transparent difficulty shifts.'
+    },
+    link: 'https://github.com/NikhilGuptaML'
+  },
+  {
+    id: '02',
+    badge: 'Client Project',
+    title: 'Doc Visualizer',
+    line: 'Production document intelligence pipeline for a government agency client.',
+    description:
+      'Building a production document intelligence system for a government agency client — finetuning Qwen2.5-VL with QLoRA on dedicated compute to extract and understand structured data from scanned documents. Exporting GGUF via llama.cpp for fully local, air-gapped deployment.',
     tags: ['Qwen2.5-VL', 'QLoRA', 'llama.cpp', 'FastAPI'],
     caseStudy: {
       label: 'Featured Case Study',
@@ -44,8 +65,8 @@ export const allProjects = [
     link: 'https://github.com/NikhilGuptaML'
   },
   {
-    id: '02',
-    badge: 'Hackathon Project',
+    id: '03',
+    badge: 'Personal Project',
     title: 'Royale AI Commander',
     line: 'LangGraph ReAct agent commanding tower defense via A*/Dijkstra on a live 20x20 grid.',
     description:
@@ -65,8 +86,8 @@ export const allProjects = [
     link: 'https://github.com/NikhilGuptaML'
   },
   {
-    id: '03',
-    badge: 'Hackathon Project',
+    id: '04',
+    badge: 'Personal Project',
     title: 'Contact Tracing Sim',
     line: 'Privacy-preserving geospatial sim — Quadtrees + Bloom Filters on a live Leaflet/OSM map.',
     description:
@@ -84,37 +105,16 @@ export const allProjects = [
       buildNotes: 'Optimized spatial queries and risk scoring to keep the simulation responsive.'
     },
     link: 'https://github.com/NikhilGuptaML'
-  },
-  {
-    id: '04',
-    badge: 'Research Project',
-    title: 'Cognitive Load Balancer',
-    line: 'Adaptive learning system that steers study difficulty in real-time based on cognitive load signals.',
-    description:
-      'An LLM-powered study platform that measures cognitive load through response accuracy, time-on-task, and self-reported difficulty. Uses a mathematical model to dynamically adjust question complexity, with research dashboards for simulated and real-world participant data.',
-    tags: ['FastAPI', 'React', 'LLM Eval', 'PostgreSQL'],
-    caseStudy: {
-      vision: 'Adapt learning difficulty on the fly based on cognitive load signals.',
-      flow: [
-        'Collect response accuracy and timing signals',
-        'Estimate cognitive load from multi-signal inputs',
-        'Select the next difficulty tier in real time',
-        'Log outcomes to research dashboards',
-        'Evaluate LLM responses against study metrics'
-      ],
-      buildNotes: 'Focused on measurable learning outcomes with transparent difficulty shifts.'
-    },
-    link: 'https://github.com/NikhilGuptaML'
   }
 ]
 
 export const experienceTimeline = [
   {
     role: 'AI Engineer',
-    company: 'Government Contract',
+    company: 'Client Project',
     type: 'Contract',
     period: '2025 — Present',
-    description: 'Building a production document intelligence pipeline for scanned government records. Finetuning Qwen2.5-VL with QLoRA on RTX A4000, exporting GGUF via llama.cpp for fully local, air-gapped deployment.',
+    description: 'Building a production document intelligence pipeline for a government agency client. Finetuning Qwen2.5-VL with QLoRA on dedicated compute, exporting GGUF via llama.cpp for fully local, air-gapped deployment.',
     skills: ['Qwen2.5-VL', 'QLoRA', 'llama.cpp', 'FastAPI']
   },
   {
@@ -122,7 +122,7 @@ export const experienceTimeline = [
     company: 'Independent',
     type: 'Self-Taught',
     period: '2024 — Present',
-    description: 'Andrew Ng\'s deep learning specializations, IIT Guwahati NLP and CV courses. Built 3+ hackathon projects shipping real agentic systems, RAG pipelines, and VLM-powered applications.',
+    description: 'Andrew Ng\'s deep learning specializations, NPTEL certifications in NLP & CV (Elite Plus Gold), Intro to LLMs and Machine Learning (Elite). Built 4+ production-grade projects spanning agentic systems, RAG pipelines, and VLM applications.',
     skills: ['PyTorch', 'HuggingFace', 'LangGraph', 'RAG']
   },
   {
@@ -130,7 +130,7 @@ export const experienceTimeline = [
     company: 'VIPS · Delhi',
     type: 'Education',
     period: '2024 — 2028',
-    description: 'Pursuing B.Tech in Computer Science with AI/ML specialization. Parallel-tracking coursework with real-world AI engineering projects and government contract work.',
+    description: 'Pursuing B.Tech in Computer Science with AI/ML specialization. Parallel-tracking coursework with real-world AI engineering projects and client work.',
     skills: ['DSA', 'C++', 'Python', 'Mathematics']
   }
 ]
@@ -149,9 +149,9 @@ export const techCategories = [
         icon: 'https://cdn.simpleicons.org/huggingface',
         tip: 'Transformers, Datasets, PEFT integration'
       },
-      { name: 'Qwen2.5-VL', tip: 'VLM finetuned for govt. document parsing' },
+      { name: 'Qwen2.5-VL', tip: 'VLM finetuned for document intelligence' },
       { name: 'QLoRA', tip: 'Memory-efficient finetuning with 4-bit quant' },
-      { name: 'Unsloth', tip: '2x faster QLoRA training on RTX A4000' },
+      { name: 'Unsloth', tip: '2x faster QLoRA training on dedicated compute' },
       { name: 'llama.cpp', tip: 'Local GGUF inference - zero cloud dependency' },
       {
         name: 'Ollama',
@@ -238,18 +238,20 @@ export const techCategories = [
 ]
 
 export const aboutParagraphs = [
-  'Second-year CS undergrad at a Tier-3 college in India. Everything AI/ML is self-taught - Andrew Ng\'s deep learning specializations, IIT Guwahati NLP and CV courses, then straight into building real systems.',
-  'Currently working as an AI engineer on a government-contracted project - building a document intelligence pipeline using Qwen2.5-VL, QLoRA finetuning, and local GGUF deployment. Real client, real constraints, shipping actual software.',
-  'Looking for a remote AI engineering role at a startup where I can ship things that matter.'
+  'I\'m Nikhil. Second-year undergrad. Everything I know about AI, I taught myself.',
+  'I\'m currently building a document intelligence pipeline for a government agency — finetuning Qwen2.5-VL, QLoRA, fully local GGUF deployment. Air-gapped. No cloud fallback. Has to work. Real client, real constraints.',
+  'I know where not to trust the model. That\'s the job.',
+  'Looking for an AI engineering internship where the work ships.'
 ]
 
 export const aboutMeta = [
-  { label: 'Status', value: 'Open to Internships', accent: true },
+  { label: 'Status', value: 'Open to Opportunities', accent: true },
   { label: 'Focus', value: 'LLMs · Agents · VLMs' },
-  { label: 'Active Project', value: 'Govt. Doc Intelligence' },
+  { label: 'Active Project', value: 'Doc Intelligence · Client' },
+  { label: 'Certifications', value: 'NPTEL Elite+ Gold · Elite' },
   { label: 'Education', value: 'B.Tech CS · 2nd Year' },
   { label: 'Location', value: 'Delhi, IN' },
-  { label: 'Preferred Stack', value: 'Python · FastAPI · LangGraph' },
+  { label: 'Stack', value: 'Python · FastAPI · LangGraph' },
   { label: 'GitHub', value: 'NikhilGuptaML' }
 ]
 
